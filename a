@@ -1,0 +1,48 @@
+import random
+
+
+def handle_invalid_input():
+    print("(!ERROR!) Invalid input. Please enter a valid Number.")
+
+def handle_keyboard_interrupt():
+    print("\n(!INTERRUPT!) Execution interrupted by the user.")
+
+
+def generate_number():
+    return random.randint(1, 10)
+
+def check_number(user_input):
+        while True:
+            if(1 <= user_input <=10):
+                print(f"Your Number: {user_input}")
+                Cnum = generate_number()
+                print(f"Computers Number: {Cnum}")
+                if(Cnum == user_input):
+                    print("You Won!!!")
+                    print("Take a candy")
+                    break
+                else:
+                    print("You Lose Try Again. \n")
+                    user_input = int(input("Input number 1-10: "))
+
+            else:
+                handle_invalid_input()
+                user_input = int(input("Input number 1-10: "))
+
+def main():
+    print("Welcome To Gess A Number.")
+    while True:
+        try:
+            user_input = int(input("Input number 1-10: "))
+            check_number(user_input)
+            if(1 <= user_input <=10):
+                break
+        except KeyboardInterrupt:
+            handle_keyboard_interrupt()
+            break
+        except ValueError:
+            handle_invalid_input()
+
+
+if __name__ == ("__main__"):
+    main()
